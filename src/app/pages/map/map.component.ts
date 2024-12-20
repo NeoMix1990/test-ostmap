@@ -31,7 +31,7 @@ export class MapComponent {
       "rooms": 2,
       "balcony": "",
       "seller": "Privat",
-      "price": 990,
+      "price": 800,
       "phone": [],
       "provision": "free",
       "client": "channel",
@@ -79,7 +79,7 @@ export class MapComponent {
       "rooms": 4,
       "balcony": "",
       "seller": "Privat",
-      "price": 400,
+      "price": 4000,
       "phone": [],
       "provision": "free",
       "client": "channel",
@@ -103,7 +103,7 @@ export class MapComponent {
       "rooms": 3,
       "balcony": "",
       "seller": "Blueground Austria GmbH",
-      "price": 3320,
+      "price": 8320,
       "phone": ["004312264404"],
       "provision": "free",
       "client": "channel",
@@ -127,7 +127,7 @@ export class MapComponent {
       "rooms": 2,
       "balcony": "",
       "seller": "Raiffeisen Vorsorge Wohnung GmbH",
-      "price": 825,
+      "price": 1825,
       "phone": ["015333000", "0153330002996"],
       "provision": "free",
       "client": "channel",
@@ -267,8 +267,10 @@ export class MapComponent {
     if (this.taskGroups.some((x: any) => x.subtasks.some((y: any) => y.completed))) {
 
       this.filterArr = this.filterArray(this.arr, this.taskGroups);
+      this.filterArr = this.filterByPriceRange(this.filterArr, this.minRange, this.maxRange);
     } else {
       this.filterArr = this.arr;
+      this.filterArr = this.filterByPriceRange(this.filterArr, this.minRange, this.maxRange);
     }
     // console.log(this.taskGroups);
     // console.log(this.filterArr);
@@ -300,11 +302,41 @@ export class MapComponent {
     this.filterArr = []; // Очищаем массив маркеров
   }
 
+  minRange: number = 800;
+  maxRange: number = 2000;
   changeStart(event: any) {
     console.log(`value start`, event);
+    this.minRange = event?.value;
+    this.filterArr = this.filterArray(this.arr, this.taskGroups);
+    this.filterArr = this.filterByPriceRange(this.filterArr, this.minRange, this.maxRange);
+    this.map.remove();
+    this.initMap();
+    // this.clearMarkers();
+    this.processAddresses();
+    console.log(this.filterArr);
   }
   changeEnd(event: any) {
     console.log(`value end`, event);
+    this.maxRange = event?.value;
+    this.filterArr = this.filterArray(this.arr, this.taskGroups);
+    this.filterArr = this.filterByPriceRange(this.filterArr, this.minRange, this.maxRange);
+    this.map.remove();
+    this.initMap();
+    // this.clearMarkers();
+    this.processAddresses();
+    console.log(this.filterArr);
   }
+
+  formatLabel(value: number): string {
+    if (value >= 1000) {
+        return (value / 1000).toFixed(1) + 'k'; // Ограничиваем до одного знака после запятой
+    }
+
+    return `${value}`;
+  }
+
+  filterByPriceRange(items: any , minPrice: any, maxPrice: any) {
+    return items.filter((item: any) => item.price >= minPrice && item.price <= maxPrice);
+}
 }
 

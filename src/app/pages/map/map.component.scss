@@ -4,5 +4,11 @@
   &-filters {
     display: flex;
     flex-direction: column;
+    margin-right: 10px;
+  }
+  .price {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
   }
 }

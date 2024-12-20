@@ -17,8 +17,11 @@
 
 .menu {
   display: flex;
-  padding-left: 0;
   list-style: none;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 24px;
+  background: #000;
 }
 
 .menu li {
@@ -30,7 +33,7 @@
 
   a {
     font-size: 22px;
-    color: #777;
+    color: #dabdbd;
     text-decoration: none;
     transition: all 0.45s;
   }
