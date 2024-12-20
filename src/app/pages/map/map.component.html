@@ -1,0 +1,12 @@
+<div class="map-container">
+  <div class="map-container-filters">
+    <div *ngFor="let group of taskGroups">
+      <app-checkbox [task]="group" (taskChange)="onGroupChange($event)"></app-checkbox>
+    </div>
+    <mat-slider min="200" max="500">
+      <input value="300" matSliderStartThumb (dragStart)="changeStart($event)">
+      <input value="400" matSliderEndThumb (dragEnd)="changeEnd($event)">
+    </mat-slider>
+  </div>
+  <div id="map" style="height: 500px;width: 80%;"></div>
+</div>

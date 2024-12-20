@@ -1,0 +1,8 @@
+.map-container {
+  display: flex;
+  justify-content: space-between;
+  &-filters {
+    display: flex;
+    flex-direction: column;
+  }
+}
