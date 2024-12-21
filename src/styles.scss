@@ -11,3 +11,18 @@
 // $my-theme: mat-light-theme($my-primary, $my-accent);
 
 // @include angular-material-theme($my-theme);
+
+
+.info-img {
+    display: flex;
+    img {
+      width: 100px;
+      height: auto;
+      transition: transform .5s;
+      z-index: 1;
+      &:hover {
+        z-index: 2;
+        transform: scale(1.5);
+      }
+    }
+  }

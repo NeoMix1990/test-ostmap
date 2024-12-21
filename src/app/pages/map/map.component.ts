@@ -38,7 +38,12 @@ export class MapComponent {
       "date": {
         "$date": "2023-07-21T22:03:27.930Z"
       },
-      "__v": 0
+      "__v": 0,
+      "images": [
+        "https://static.vecteezy.com/system/resources/previews/025/220/125/non_2x/picture-a-captivating-scene-of-a-tranquil-lake-at-sunset-ai-generative-photo.jpg",
+        "https://static.vecteezy.com/system/resources/previews/036/324/708/large_2x/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg",
+        "https://static.vecteezy.com/system/resources/previews/040/710/818/large_2x/birdgraphy-bird-picture-most-beautiful-birdgraphy-naturegraphy-photo.jpg"
+      ]
     },
     {
       "_id": {
@@ -62,7 +67,11 @@ export class MapComponent {
       "date": {
         "$date": "2023-07-21T22:03:27.928Z"
       },
-      "__v": 0
+      "__v": 0,
+      "images": [
+        "https://static.vecteezy.com/system/resources/previews/036/324/708/large_2x/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg",
+        "https://static.vecteezy.com/system/resources/previews/025/220/125/non_2x/picture-a-captivating-scene-of-a-tranquil-lake-at-sunset-ai-generative-photo.jpg"
+      ]
     },
     {
       "_id": {
@@ -86,7 +95,12 @@ export class MapComponent {
       "date": {
         "$date": "2023-07-21T22:03:27.930Z"
       },
-      "__v": 0
+      "__v": 0,
+      "images": [
+        "https://static.vecteezy.com/system/resources/previews/040/710/818/large_2x/birdgraphy-bird-picture-most-beautiful-birdgraphy-naturegraphy-photo.jpg",
+        "https://static.vecteezy.com/system/resources/previews/025/220/125/non_2x/picture-a-captivating-scene-of-a-tranquil-lake-at-sunset-ai-generative-photo.jpg",
+        "https://static.vecteezy.com/system/resources/previews/036/324/708/large_2x/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg"
+      ]
     },
     {
       "_id": {
@@ -110,7 +124,11 @@ export class MapComponent {
       "date": {
         "$date": "2023-07-21T22:03:27.931Z"
       },
-      "__v": 0
+      "__v": 0,
+      "images": [
+        "https://static.vecteezy.com/system/resources/previews/036/324/708/large_2x/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg",
+        "https://static.vecteezy.com/system/resources/previews/040/710/818/large_2x/birdgraphy-bird-picture-most-beautiful-birdgraphy-naturegraphy-photo.jpg"
+      ]
     },
     {
       "_id": {
@@ -134,7 +152,11 @@ export class MapComponent {
       "date": {
         "$date": "2023-07-21T22:03:27.936Z"
       },
-      "__v": 0
+      "__v": 0,
+      "images": [
+        "https://static.vecteezy.com/system/resources/previews/040/710/818/large_2x/birdgraphy-bird-picture-most-beautiful-birdgraphy-naturegraphy-photo.jpg",
+        "https://static.vecteezy.com/system/resources/previews/036/324/708/large_2x/ai-generated-picture-of-a-tiger-walking-in-the-forest-photo.jpg"
+      ]
     }
   ]
 
@@ -210,6 +232,12 @@ export class MapComponent {
               ? itemWithLocation.phone.map((phone: any) => `<span>${phone}</span>`).join('<br>')
               : itemWithLocation.phone || 'Нет телефонов'
             }
+          <br> 
+          <div class="info-img">${Array.isArray(itemWithLocation.images) && itemWithLocation.images.length
+              ? itemWithLocation.images.map((image: any) => `<img src="${image}">`)
+              : itemWithLocation.images || 'Нет телефонов'
+            }
+          </div>
         `;
           this.addCircle(lat, lon, popupContent);
         } else {
